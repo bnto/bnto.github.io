@@ -62,6 +62,14 @@
 					max-width: 950px;
 				}
 			}
+			@media screen and (min-width: 1200px) {
+				html {
+					font-size: 110%;
+				}
+				.container {
+					max-width: 1150px;
+				}
+			}
 			@media screen and (max-width: 600px) {
 				html {
 					font-size: 40%;
@@ -131,12 +139,10 @@
 				0% {
 					opacity: 0;
 					transform: translateX(-7rem) translateY(7rem);
-					.top: 10px;
 				}
 				100% {
 					opacity: 1;
 					transform: translateX(-7rem) translateY(5rem);
-					.top: 0;
 				}
 			}
 			@keyframes tooltiptop {
