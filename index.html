@@ -30,7 +30,8 @@
 			}
 			html {
 				font-size: 62.5%;	/* 1rem = 1px */
-				font-family: sans-serif, 'Raleway', -apple-system, Helvetica, sans-serif;
+				line-height: 1.19;
+				font-family: Helvetica, 'Raleway', -apple-system, sans-serif;
 			}
 			body {
 				font-size: 1.6rem;
@@ -71,58 +72,100 @@
 				font-size: 4rem;
 				font-weight: 300;
 			}
-			/* a, a:visited {
-				color: rgba(255,255,255,1);
-				.color: tomato;
-				color: inherit;
-				text-decoration: none;
-				position: relative;
-				.padding: 0 1em;
-				.font-style: italic;
-			}
-			a:before {
-				content: '';
-				position: absolute;
-				bottom: -0.1rem;
-				width: 100%;
-				height: 2px;
-				background: rgba(0,0,0,1);
-				background: tomato;
-				z-index: -1;
-				transition: all 0.2s;
-			}
-			a:hover:before, a:active:before {
-				content: '';
-				height: 2.4rem;
-			}
-			a:hover {
-				.font-style: italic;
-				.color: white;
-			} */
 			
+			p {
+				position: relative;
+			}
 			a, a:visited {
 				text-decoration: none;
 				border-bottom: 1px solid tomato;
 				color: inherit;
 				position: relative;
-				padding: 0 0.1em;
-				padding-bottom: 0.5rem;
 				white-space: nowrap;
 			}
-			/*
-			a:before {
+			a:hover {
+				color: rgba(0,0,0,1);
+			}
+			span {
+				font: 2rem Georgia, serif;
+				line-height: 1.2;
+				font-style: italic;
+				text-align: center;
+				-webkit-font-smoothing: antialiased;
+				font-smoothing: antialiased;
+				background: black;
+				color: white;
+				box-shadow: 4px 4px 10px rgba(0,0,0,.8);
+				padding: 20px 10px;
+				padding: 1em 0.8em;
+				width: 150px;
+				width: 20rem;
+				z-index: 10;
+				position: relative;
+				transition: all .4s;
+				display: none;
+				border-radius: 5px;
+				transform: translateX(-7rem) translateY(5rem);
+			}
+			span.top {
+				transform: translateX(-10rem) translateY(-6rem);
+			}
+			span.top:before {
+				content: '';
+				bottom: -7px;
+				top: auto;
+			}
+			span:before {
 				content: '';
 				position: absolute;
-				left: 0; right: 0; bottom: 0;
-				background: tomato;
-				height: 0;
-				transition: all 0.4s;
+				background: inherit;
 				z-index: -1;
+				top: -6px;
+				left: 20px;
+				transform: rotate(45deg);
+				width: 15px;
+				height: 15px;
 			}
-			a:hover:before {
-				content: '';
-				height: 50%;
-			} */
+			
+			@keyframes tooltip {
+				0% {
+					opacity: 0;
+					transform: translateX(-7rem) translateY(7rem);
+					.top: 10px;
+				}
+				100% {
+					opacity: 1;
+					transform: translateX(-7rem) translateY(5rem);
+					.top: 0;
+				}
+			}
+			@keyframes tooltiptop {
+				0% {
+					opacity: 0;
+					transform: translateX(-10rem) translateY(-8rem);
+				}
+				100% {
+					opacity: 1;
+					transform: translateX(-10rem) translateY(-6rem);
+				}
+			}
+			a, a:visited {
+				cursor: pointer;
+				cursor: hand;
+				-webkit-user-select: none;
+				-webkit-touch-callout: none;
+			}
+			a:hover + span, a:focus + span, a:active + span {
+				position: absolute;
+				display: inline;
+				animation-name: tooltip;
+				animation-duration: 0.3s;
+				animation-timing-function: ease-in-out;
+			}
+			
+			a:hover + span.top, a:focus + span, a:active + span.top {
+				animation-name: tooltiptop;
+			}
 
 			
 		</style>
@@ -131,14 +174,26 @@
 		
 			<div class="container">
 				<h1>Christophe Bento</h1>
-				<p>Web Developer &amp; Designer from Luxembourg, currently looking
-					for my next adventure.
+				<p><a>Web</a>
+					<span>Worked as a Webmarketing Project Manager Assistant for a web agency in Strasbourg, France.</span>
+					
+				Developer &amp; Designer from <a>Luxembourg</a>,
+					<span>Born in Luxembourg.<br/>Graduated in France.</span>
+					
+				currently <a>looking</a>
+					<span>...looking for a unicorn... or a job as a Front-end Web Developer.</span>
+					
+				for my next <a>adventure</a>.
+					<span>Graduated from the University of Strasbourg with a Master of Science in Digital Economics.</span>
+					
 				</p>
 				<p>Check out my latest project<br/>
 					<a href="http://1wpad.nto.lu">1 webpage a day</a>
+					<!--<span>Each day I will create a new webpage and blog about it.</span>-->
 				</p>
 				<p>Or just say
 					<a href="mailto:hi@nto.lu">hi (at) nto.lu</a>
+					<span class="top">Ask me anything!</span>
 				</p>
 			</div>
 	</body>
