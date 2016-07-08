@@ -62,7 +62,7 @@
 					max-width: 950px;
 				}
 			}
-			@media screen and (min-width: 1200px) {
+			@media screen and (min-width: 1400px) {
 				html {
 					font-size: 110%;
 				}
@@ -87,6 +87,7 @@
 			a, a:visited {
 				text-decoration: none;
 				border-bottom: 1px solid tomato;
+				*border-color: rgba(0,0,0,0.2);
 				color: inherit;
 				position: relative;
 				white-space: nowrap;
@@ -130,11 +131,32 @@
 				z-index: -1;
 				top: -6px;
 				left: 20px;
+				-webkit-transform: rotate(45deg);
+				-ms-transform: rotate(45deg);
 				transform: rotate(45deg);
 				width: 15px;
 				height: 15px;
 			}
-			
+			@-webkit-keyframes tooltip {
+				0% {
+					opacity: 0;
+					-webkit-transform: translateX(-7rem) translateY(7rem);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translateX(-7rem) translateY(5rem);
+				}
+			}
+			@-webkit-keyframes tooltiptop {
+				0% {
+					opacity: 0;
+					-webkit-transform: translateX(-10rem) translateY(-8rem);
+				}
+				100% {
+					opacity: 1;
+					-webkit-transform: translateX(-10rem) translateY(-6rem);
+				}
+			}			
 			@keyframes tooltip {
 				0% {
 					opacity: 0;
@@ -158,18 +180,20 @@
 			a, a:visited {
 				cursor: pointer;
 				cursor: hand;
-				-webkit-user-select: none;
-				-webkit-touch-callout: none;
+				.-webkit-user-select: none;
+				.-webkit-touch-callout: none;
 			}
 			a:hover + span, a:focus + span, a:active + span {
 				position: absolute;
 				display: inline;
+				-webkit-animation: tooltip 0.3s ease-in-out;
 				animation-name: tooltip;
 				animation-duration: 0.3s;
 				animation-timing-function: ease-in-out;
 			}
 			
 			a:hover + span.top, a:focus + span, a:active + span.top {
+				-webkit-animation-name: tooltiptop;
 				animation-name: tooltiptop;
 			}
 
@@ -193,7 +217,9 @@
 					<span>Graduated from the University of Strasbourg with a Master of Science in Digital Economics.</span>
 					
 				</p>
-				<p>Check out my latest project<br/>
+				<p>Find me at
+					<a href="https://github.com/bnto">Github</a>.<br/>
+				Check out my latest project<br/>
 					<a href="http://1wpad.nto.lu">1 webpage a day</a>
 					<!--<span>Each day I will create a new webpage and blog about it.</span>-->
 				</p>
