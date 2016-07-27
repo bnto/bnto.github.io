@@ -87,7 +87,7 @@
 			a, a:visited {
 				text-decoration: none;
 				border-bottom: 1px solid tomato;
-				*border-color: rgba(0,0,0,0.2);
+				/*border-color: rgba(0,0,0,0.2);*/
 				color: inherit;
 				position: relative;
 				white-space: nowrap;
@@ -180,8 +180,8 @@
 			a, a:visited {
 				cursor: pointer;
 				cursor: hand;
-				.-webkit-user-select: none;
-				.-webkit-touch-callout: none;
+				/*-webkit-user-select: none;
+				-webkit-touch-callout: none; */
 			}
 			a:hover + span, a:focus + span, a:active + span {
 				position: absolute;
@@ -203,7 +203,7 @@
 	<body>
 		
 			<div class="container">
-				<h1>Christophe Bento</h1>
+				<h1 id="js-letter">Christophe Bento</h1>
 				<p><a>Web</a>
 					<span>Worked as a Webmarketing Project Manager Assistant for a web agency in Strasbourg, France.</span>
 					
@@ -228,5 +228,44 @@
 					<span class="top">Ask me anything!</span>
 				</p>
 			</div>
+			<script type="text/javascript">
+				'use strict';
+
+				window.onload = function () {
+
+					var randomLetter = function randomLetter() {
+						return Math.random().toString(36).slice(2, 3);
+					};
+
+					var letters = document.getElementById('js-letter').innerHTML;
+					letters = letters.toLowerCase();
+					var element = document.getElementById('js-letter');
+
+					var output = document.getElementById('js-letter').innerHTML;
+					output = output.split('');
+
+					// init letters
+					for (var i = 0; i < letters.length; i++) {
+						if (letters[i] == ' ') {
+							output[i] = ' ';
+						} else {
+							output[i] = randomLetter();
+						}
+					}
+
+					// set interval
+					var cd = setInterval(function () {
+						for (var _i = 0; _i < letters.length; _i++) {
+							if (output[_i] != letters[_i]) {
+								output[_i] = randomLetter();
+							}
+						}
+						element.innerHTML = output.join('');
+						if (output == letters) {
+							clearInterval(cd);
+						}
+					}, 10);
+				};
+			</script>
 	</body>
 </html>
