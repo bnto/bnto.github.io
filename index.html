@@ -229,43 +229,53 @@
 				</p>
 			</div>
 			<script type="text/javascript">
-				'use strict';
+			'use strict';
 
-				window.onload = function start() {
+			window.onload = function () {
 
-					var randomLetter = function randomLetter() {
-						return Math.random().toString(36).slice(2, 3);
-					};
+				var randomLetter = function randomLetter() {
+					return Math.random().toString(36).slice(2, 3);
+				};
 
-					var letters = document.getElementById('js-letter').innerHTML;
-					letters = letters.toLowerCase();
-					var element = document.getElementById('js-letter');
+				var letters = document.getElementById('js-letter').innerHTML;
+				letters = letters.toLowerCase();
+				var element = document.getElementById('js-letter');
 
-					var output = document.getElementById('js-letter').innerHTML;
-					output = output.split('');
+				var output = document.getElementById('js-letter').innerHTML;
 
-					// init letters
-					for (var i = 0; i < letters.length; i++) {
-						if (letters[i] == ' ') {
-							output[i] = ' ';
-						} else {
-							output[i] = randomLetter();
-						}
+				output = output.split('');
+
+				// init letters
+				for (var _i = 0; _i < letters.length + 1; _i++) {
+					if (letters[_i] == ' ') {
+						output[_i] = ' ';
+					} else {
+						output[_i] = ' ';
+					}
+				}
+
+				// set interval
+				var i = 0;
+				var cd = setInterval(function () {
+					if (output[i] != letters[i]) {
+						output[i] = randomLetter();
+					} else {
+						i++;
 					}
 
-					// set interval
-					var cd = setInterval(function () {
-						for (var _i = 0; _i < letters.length; _i++) {
-							if (output[_i] != letters[_i]) {
-								output[_i] = randomLetter();
-							}
-						}
-						element.innerHTML = output.join('');
-						if (output == letters) {
-							clearInterval(cd);
-						}
-					}, 10);
-				};
+					element.innerHTML = output.join('');
+					if (output == letters) {
+						clearInterval(cd);
+					}
+				}, 5);
+			};
+
 			</script>
+			<!-- Google Analytics -->
+			<script>
+			    window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+			    ga('create','UA-82115574-1','auto');ga('send','pageview')
+			</script>
+			<script src="https://www.google-analytics.com/analytics.js" async defer></script>
 	</body>
 </html>
