@@ -162,7 +162,7 @@
 				}
 				40% {
 					opacity: 1;
-					transform: translateX(-7rem) translateY(4.5rem);
+					transform: translateX(-7rem) translateY(4.5rem) rotate(-20deg);
 				}
 				100% {
 					opacity: 1;
@@ -186,7 +186,7 @@
 				}
 				40% {
 					opacity: 1;
-					transform: translateX(-7rem) translateY(4.5rem);
+					transform: translateX(-7rem) translateY(4.5rem) rotate(-20deg);
 				}
 				100% {
 					opacity: 1;
@@ -243,13 +243,13 @@
 					<span aria-hidden="true">Graduated from the University of Strasbourg with a Master of Science in Digital Economics.</span>
 					
 				</p>
-				<p class="small">Check out my<br>
+				<p>Check out my<br>
 					<a href="http://codepen.io/bnto/pens/public/">Codepen</a> &amp; <a href="https://github.com/bnto">Github</a><br/>
 				<!-- Check out my latest project<br/>
 					<a href="http://1wpad.nto.lu">1 webpage a day</a> -->
 					<!--<span>Each day I will create a new webpage and blog about it.</span>-->
 				</p>
-				<p class="small">Or just say
+				<p>Or just say
 					<a href="mailto:hi@nto.lu">hi (at) nto.lu</a>
 					<span class="top">Ask me anything!</span>
 				</p>
@@ -309,8 +309,25 @@
 						clearInterval(cd);
 					}
 				}, 5);
-			};
 
+
+				/* jQuery-like query selector */
+				var $ = function(selector){
+					return document.querySelectorAll(selector);
+				}
+
+				/* aria */
+				$('p:nth-of-type(1)')[0].onclick = function(){};
+
+				$('p:nth-of-type(1) a').forEach(function(e, index){
+					e.onmouseover = function(){
+						$('span')[index].setAttribute('aria-hidden', false);
+					}
+					e.onmouseleave = function(){
+						$('span')[index].setAttribute('aria-hidden', true);
+					}
+				});
+			};
 			</script>
 			<!-- Google Analytics -->
 			<script>
