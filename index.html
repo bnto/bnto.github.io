@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Christophe Bento - Web Developer &amp; Designer from Luxembourg</title>
 		<meta name="description" content="Christophe Bento is a Front-end Web Developer &amp; Designer from Luxembourg">
+		<link rel="canonical" href="http://be.nto.lu/">
 		<!--
 			Designed by
 			                            _|
@@ -37,14 +38,14 @@
 				font-size: 1.6rem;
 				
 				background: white;
-				color: rgba(0,0,0,0.8);
+				color: rgba(0,0,0,0.6);
 
 			}
 			h1 {
 				font-weight: normal;
 				margin-bottom: 2.5em;
 				font-size: 1.6rem;
-				text-transform: uppercase;
+				text-transform: lowercase;
 				
 				letter-spacing: 0.4em;
 			}
@@ -53,6 +54,11 @@
 				max-width: 550px;
 				
 				padding: 0 25px;
+			}
+			@media screen and (max-width: 899px) {
+				html {
+					font-size: 70%;
+				}
 			}
 			@media screen and (min-width: 900px) {
 				html {
@@ -73,27 +79,36 @@
 			@media screen and (max-width: 600px) {
 				html {
 					font-size: 40%;
+					line-height: 1.5;
+				}
+				.container {
+					max-width: 380px;
 				}
 			}
+
 			p {
 				margin: 1em 0;
 				font-size: 4rem;
 				font-weight: 300;
 			}
-			
-			p {
+			p:not(:nth-of-type(1)) {
+				font-size: 2.4rem;
+			}
+			p, a {
 				position: relative;
 			}
 			a, a:visited {
 				text-decoration: none;
 				border-bottom: 1px solid tomato;
-				/*border-color: rgba(0,0,0,0.2);*/
+				border-color: rgba(0,0,0,0.2);
 				color: inherit;
 				position: relative;
 				white-space: nowrap;
+				font-weight: 400;
 			}
 			a:hover {
 				color: rgba(0,0,0,1);
+				border-bottom: 5px solid tomato;
 			}
 			span {
 				font: 2rem Georgia, serif;
@@ -105,16 +120,19 @@
 				background: black;
 				color: white;
 				box-shadow: 4px 4px 10px rgba(0,0,0,.8);
+				box-shadow: 1.5rem 3rem 5rem rgba(0,0,0,.8);
+				/*box-shadow: 30px 30px 100px rgba(0,0,0,.8);*/
 				padding: 20px 10px;
 				padding: 1em 0.8em;
 				width: 150px;
 				width: 20rem;
 				z-index: 10;
 				position: relative;
-				transition: all .4s;
+				transition: transform .4s;
 				display: none;
 				border-radius: 5px;
 				transform: translateX(-7rem) translateY(5rem);
+				transform-origin: center top;
 			}
 			span.top {
 				transform: translateX(-10rem) translateY(-6rem);
@@ -142,6 +160,10 @@
 					opacity: 0;
 					-webkit-transform: translateX(-7rem) translateY(7rem);
 				}
+				40% {
+					opacity: 1;
+					transform: translateX(-7rem) translateY(4.5rem);
+				}
 				100% {
 					opacity: 1;
 					-webkit-transform: translateX(-7rem) translateY(5rem);
@@ -161,6 +183,10 @@
 				0% {
 					opacity: 0;
 					transform: translateX(-7rem) translateY(7rem);
+				}
+				40% {
+					opacity: 1;
+					transform: translateX(-7rem) translateY(4.5rem);
 				}
 				100% {
 					opacity: 1;
@@ -205,25 +231,25 @@
 			<div class="container">
 				<h1 id="js-letter">Christophe Bento</h1>
 				<p><a>Web</a>
-					<span>Worked as a Webmarketing Project Manager Assistant for a web agency in Strasbourg, France.</span>
+					<span aria-hidden="true">Worked as a Webmarketing Project Manager Assistant for a web agency in Strasbourg, France.</span>
 					
 				Developer &amp; Designer from <a>Luxembourg</a>,
-					<span>Born in Luxembourg.<br/>Graduated in France.</span>
+					<span aria-hidden="true">Born in Luxembourg.<br/>Graduated in France.</span>
 					
 				currently <a>looking</a>
-					<span>...looking for a unicorn... or a job as a Front-end Web Developer.</span>
+					<span aria-hidden="true">...looking for a unicorn... or a job as a Front-end Web Developer.</span>
 					
 				for my next <a>adventure</a>.
-					<span>Graduated from the University of Strasbourg with a Master of Science in Digital Economics.</span>
+					<span aria-hidden="true">Graduated from the University of Strasbourg with a Master of Science in Digital Economics.</span>
 					
 				</p>
-				<p>Check out my<br>
+				<p class="small">Check out my<br>
 					<a href="http://codepen.io/bnto/pens/public/">Codepen</a> &amp; <a href="https://github.com/bnto">Github</a><br/>
 				<!-- Check out my latest project<br/>
 					<a href="http://1wpad.nto.lu">1 webpage a day</a> -->
 					<!--<span>Each day I will create a new webpage and blog about it.</span>-->
 				</p>
-				<p>Or just say
+				<p class="small">Or just say
 					<a href="mailto:hi@nto.lu">hi (at) nto.lu</a>
 					<span class="top">Ask me anything!</span>
 				</p>
@@ -250,21 +276,36 @@
 					if (letters[_i] == ' ') {
 						output[_i] = ' ';
 					} else {
-						output[_i] = ' ';
+						output[_i] = randomLetter();
 					}
 				}
+
+				// add styles
+				element.style.transition = 'letter-spacing 300ms ease-in-out';
+				element.style.letterSpacing = '0.1em';
 
 				// set interval
 				var i = 0;
 				var cd = setInterval(function () {
 					if (output[i] != letters[i]) {
-						output[i] = randomLetter();
+						for(var __i = i; __i < letters.length; __i++){
+							if(letters[__i] == ' '){
+								output[__i] = ' ';
+							} else {
+								output[__i] = randomLetter();
+							}
+						}
 					} else {
 						i++;
 					}
 
 					element.innerHTML = output.join('');
-					if (output == letters) {
+
+
+					if (element.innerHTML == letters) {
+						console.log('letter countdown done');
+						element.style.letterSpacing = '0.4em';
+						element.innerHTML += '.';
 						clearInterval(cd);
 					}
 				}, 5);
