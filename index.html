@@ -66,6 +66,7 @@
 				color: white;
 				padding: 0 1em 0 0.3em;
 				letter-spacing: 0.1em;
+				-webkit-transform: rotate(-3deg) translate(-1.5em, 1em);
 				transform: rotate(-3deg) translate(-1.5em, 1em);
 				display: inline-block;
 				/*box-shadow: 1px 1px 1px black;*/
@@ -89,14 +90,14 @@
 				animation: spin 1300ms infinite linear;
 			}
 			@-webkit-keyframes spin {
-				0 {
+				0% {
 					-webkit-transform: rotate(0);
 				} 100% {
 					-webkit-transform: rotate(360deg);
 				}
 			}
 			@keyframes spin {
-				0 {
+				0% {
 					transform: rotate(0);
 				} 100% {
 					transform: rotate(360deg);
@@ -302,15 +303,15 @@
 			@-webkit-keyframes tooltiptop {
 				0% {
 					opacity: 0;
-					-webkit-transform: translateX(-8rem) translateY(-9rem) scale(0.5);
+					-webkit-transform: translateX(-7rem) translateY(-9rem) scale(0.5);
 				}
 				40% {
 					opacity: 1;
-					-webkit-transform: translateX(-8rem) translateY(-7rem) scale(1.2);
+					-webkit-transform: translateX(-7rem) translateY(-7rem) scale(1.2);
 				}
 				100% {
 					opacity: 1;
-					-webkit-transform: translateX(-8rem) translateY(-7rem);
+					-webkit-transform: translateX(-7rem) translateY(-7rem);
 				}
 			}			
 			@keyframes tooltip {
@@ -350,6 +351,7 @@
 			a:hover + span, a:focus + span, a:active + span {
 				position: absolute;
 				display: inline;
+				animation: tooltip 0.3s ease-in-out;
 				-webkit-animation: tooltip 0.3s ease-in-out;
 				animation-name: tooltip;
 				animation-duration: 0.3s;
