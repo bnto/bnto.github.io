@@ -1,0 +1,173 @@
+/* simple reset */
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: light dark;
+    hanging-punctuation: first last;
+}
+
+body {
+    min-height: 100svh;
+}
+
+img,
+picture,
+svg,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+/* new css properties reset */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+p {
+    max-width: 75ch;
+    text-wrap: pretty;
+}
+
+@media (prefer-reduced-motion: no-preference) {
+    :has(:target) {
+        scroll-behavior: smooth;
+        scroll-padding-top: 1rem;
+    }
+}
+
+
+html {
+    /* font-size: 62.5%; */
+    /* 1rem = 1px */
+    /* line-height: 1.19; */
+    font-family: Helvetica, 'Raleway', -apple-system, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    /* font-size: 1.6rem; */
+    background: white;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+::-moz-selection {
+    background: indianred;
+}
+
+::selection {
+    background: indianred;
+}
+
+* {
+    /* outline: 1px solid hotpink; */
+}
+
+header,
+main,
+section,
+footer {
+    width: min(950px, 100% - 4rem);
+    margin-inline: auto;
+}
+
+nav {
+    /* display: none; */
+}
+
+main {
+    /* height: 60vh; */
+    /* font-size: 5rem; */
+    font-weight: 300;
+    padding: 0 4rem;
+
+    --h3-min-font-size: 32;
+    --h3-max-font-size: 64;
+    font-size: calc(var(--h3-min-font-size) * 1px + (var(--h3-max-font-size) - var(--h3-min-font-size)) * (100vw - 360px) / 1560) !important;
+    font-weight: 100;
+}
+
+section p {
+    font-weight: 100;
+}
+
+details {
+    position: relative;
+}
+
+summary {
+    margin-bottom: 4px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: inherit;
+    white-space: nowrap;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+summary:hover,
+summary:focus {
+    margin-bottom: 0;
+    border-bottom: 5px solid tomato;
+    color: rgba(0, 0, 0, 1);
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+details,
+summary {
+    display: inline-block;
+}
+
+details span {
+    display: block;
+    position: absolute;
+    padding: 1em 0.75em;
+    width: 250px;
+    opacity: 0;
+
+    font-family: Georgia, serif;
+    /* 24px */
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-style: italic;
+    text-align: center;
+
+    background: black;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 1.5rem 3rem 5rem rgba(0, 0, 0, .8);
+    z-index: 10;
+
+    transition: transform .4s;
+    /* transform: translateX(-7rem) translateY(5rem); */
+    transform: translateY(0.5rem);
+    transform-origin: center top;
+}
+
+details span:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: 3rem;
+    transform: rotate(45deg);
+    background-color: inherit;
+    height: 20px;
+    width: 20px;
+}
+
+details[open] span {
+    opacity: 1;
+}
